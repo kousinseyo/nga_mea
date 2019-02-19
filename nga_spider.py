@@ -13,7 +13,7 @@ class nga:
             "Accept-Encoding": "gzip, deflate",
             "Accept-Language": "zh-CN,zh;q=0.9",
             "Connection": "keep-alive",
-            "Cookie": "Hm_lvt_5adc78329e14807f050ce131992ae69b=1550191569; taihe=cb628e13f4229471cb7bd7cf37d66dc2; taihe_session=897a4b2120e10077b299c0200afe72a3; UM_distinctid=168ee9e28c7853-02f1a56f98d7e8-1333063-1fa400-168ee9e28c8bff; ngaPassportOid=c770d62ae95aaa5b4eb510a6b965914d; ngacn0comUserInfo=bluter%09bluter%0939%0939%09%0911%0921879%094%090%09262%0996_15%2C61_3; ngacn0comUserInfoCheck=a439bd88f55a1ad8a29330b35838fe7c; ngacn0comInfoCheckTime=1550191593; ngaPassportUid=35820591; ngaPassportUrlencodedUname=bluter; ngaPassportCid=df129752c7b162156ec086bd0367e78a6f7140be; CNZZDATA1256638943=898468682-1550191403-https%253A%252F%252Fbbs.nga.cn%252F%7C1550191403; CNZZDATA30039253=cnzz_eid%3D350413745-1550191387-null%26ntime%3D1550191074; CNZZDATA30043604=cnzz_eid%3D244378759-1550187771-null%26ntime%3D1550186317; lastvisit=1550191608; lastpath=/read.php?tid=15923050; bbsmisccookies=%7B%22uisetting%22%3A%7B0%3A%22f%22%2C1%3A1550191907%7D%2C%22insad_refreshid%22%3A%7B0%3A%22/154890390947715%22%2C1%3A1550796364%7D%2C%22pv_count_for_insad%22%3A%7B0%3A-45%2C1%3A1550250010%7D%2C%22insad_views%22%3A%7B0%3A1%2C1%3A1550250010%7D%7D; Hm_lpvt_5adc78329e14807f050ce131992ae69b=1550191608",
+            "Cookie": Your_Cookie, # 此处填入自己登录账号后的cookie
             "Host": "bbs.nga.cn",
             "Upgrade-Insecure-Requests": "1",
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.96 Safari/537.36"
