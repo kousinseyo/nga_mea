@@ -413,6 +413,63 @@ def praise():
     con.close()
 
 
+# 人物关系表
+def relation():
+    mea = "(comment like '%mea%' or comment like '%めあ%' or comment like '%神楽%' or comment like '%神乐%'or comment like '%庄司%' or comment like '%爱小姐%' or comment like '%鱼板%')"
+    aqua = "(comment like '%夸%' or comment like '%qua%' or comment like '%阿库%' or comment like '%苹果%' or comment like '%海王%')"
+    tamaki = '(comment like "%犬山%" or comment like "%佃煮%" or comment like "%海苔男%" or comment like "%tama%" or comment like "%玉姬%")'
+    mana = '(comment like "%mana%" or comment like "%角龙%" or comment like "%祖宗%" or comment like "%有栖%")'
+    hinako = '(comment like "%蝠%" or comment like "%hina%" or comment like "%宇森%" or comment like "%bfm%")'
+    fubuki = '(comment like "%狐狸%" or comment like "%吹雪%" or comment like "%白上%" or comment like "%少主%" or comment like "%fbk%" or comment like "%fubuki%" or comment like "%玉米%")'
+    shiori = '(comment like "%shiori%" or comment like "%大姐%")'
+    hime = '(comment like "%大头%" or comment like "%信姬%" or comment like "%家主%" or comment like "%信tama%" or comment like "%hime%")'
+    miu = '(comment like "%大小姐%" or comment like "%miu%" or comment like "%森永%")'
+    paryi = '(comment like "%帕里%" or comment like "%爬犁%" or comment like "%paryi%")'
+    lan = '(comment like "%兰熊%" or comment like "%兰太郎%" or comment like "%绿熊%")'
+    jinghua = '(comment like "%京华%" or comment like "%京鸽鸽%" or comment like "%京哥哥%")'
+    hana = '(comment like "%hana%" or comment like "%松鼠%" or comment like "%千草%")'
+    haneru = '(comment like "%兔子%" or comment like "%黄兔%" or comment like "%组长%" or comment like "%因幡%" or comment like "%haneru%")'
+    matsuri = '(comment like "%马自立%" or comment like "%夏色%" or comment like "%夏妹%" or comment like "%夏哥%" or comment like "%祭妹%")'
+    liz = '(comment like "%阿律%" or comment like "%高槻%")'
+    ayame = '(comment like "%狗狗%" or comment like "%ayame%" or comment like "%百鬼%")'
+    serena = '(comment like "%花园猫%" or comment like "%猫猫%" or comment like "%serena%")'
+    ena = '(comment like "%ena%")'
+    antang = '(comment like "%安堂%")'
+    cierra = '(comment like "%谢拉%" or comment like "%cierra%")'
+    yuni = '(comment like "%太子%" or comment like "%yuni%")'
+    shion = '(comment like "%shion%" or comment like "%诗音%" or comment like "%紫咲%" or comment like "%傻紫%" or comment like "%小学生%")'
+    mio = '(comment like "%mio%" or comment like "%老干部%" or comment like "%大神%" or comment like "%三才%")'
+    heart = '(comment like "%心心%" or comment like "%心酱%" or comment like "%赤井%")'
+    choco = '(comment like "%巧可%" or comment like "%癒月%" or comment like "%choco%")'
+    sora = '(comment like "%时乃%" or comment like "%空妈%")'
+    ichika = '(comment like "%宗谷%" or comment like "%蓝狗%" or comment like "%黄豆%")'
+    kurumu = '(comment like "%稻荷%")'
+    roboco = '(comment like "%萝卜子%")'
+
+    vtuber_list = [mea, aqua, tamaki, mana, hinako, fubuki, shiori, hime, miu, paryi, lan, jinghua, hana, haneru,
+                   matsuri, liz, ayame, serena, ena, antang, cierra,
+                   yuni, shion, mio, heart, choco, sora, ichika, kurumu, roboco]
+    vtuber_name = ['神楽めあ', '湊阿库娅', '犬山玉姬', '有栖マナ', '宇森ひなこ', '白上吹雪', 'ユメノシオリ', '织田信姬', '森永みう', 'Paryi', '日ノ隈らん',
+                   '张京华', '千草はな', '因幡はねる', '夏色祭', '高槻律', '百鬼绫目', '花園セレナ', 'ENA', '安堂いなり', '谢拉', 'YUNI', '紫咲诗音', '大神澪',
+                   '赤井心', '癒月巧可', '时乃空', '宗谷いちか', '稲荷くろむ', '萝卜子']
+
+    con = pymysql.connect("localhost", "root", "123456", "nga", charset="utf8")
+    cur = con.cursor()
+    df = pd.DataFrame(index=vtuber_name, columns=vtuber_name)
+    for i in range(len(vtuber_list)):
+        for j in range(len(vtuber_list)):
+            if i == j:
+                df[vtuber_name[i]][vtuber_name[j]] = 0
+            else:
+                cur.execute("select count(num) from mea_new where %s and %s" % (vtuber_list[i], vtuber_list[j]))
+                result = cur.fetchall()
+                # print(result)
+                df[vtuber_name[i]][vtuber_name[j]] = result[0][0]
+    print(df)
+    df.to_csv("relation.csv", encoding="utf_8_sig")
+
+
 if __name__ == "__main__":
     # data = get_comment(name="Akiyo桑")
     # nga_wordcloud(data,"Akiyo桑")
+    relation()
